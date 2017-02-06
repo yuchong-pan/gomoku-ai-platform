@@ -32,7 +32,7 @@ Your task is to implement the following functions in Python:
    
    The platform calls this function at the very beginning of a game. No values are expected to be returned.
    
-   The first argument `n` is an integer satisfying. Typically `n` equals `19`. which means that the size of the chessboard is `n*n`.
+   The first argument `n` is an integer satisfying, which means that the size of the chessboard is `n*n`. Typically, `n` equals `19`.
    
 2. Next Step
    
