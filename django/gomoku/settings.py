@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'gomoku.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '138.197.112.97',
+        'NAME': 'gomoku',
+        'USER': 'root',
+        'PASSWORD': os.environ['DB_PASSWORD'],
+        'OPTIONS': { 'charset': 'utf8' },
     }
 }
 
