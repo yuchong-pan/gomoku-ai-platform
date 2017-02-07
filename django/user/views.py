@@ -3,7 +3,7 @@ import re
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.models import User
 from django.views.decorators.http import require_http_methods
-from django.core.mail import send_email
+from django.core.mail import send_mail
 
 from .models import RegisterToken
 
