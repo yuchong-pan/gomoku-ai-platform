@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  django:
+    build: ./django
+    command: python manage.py runserver 0.0.0.0:8000
+    expose:
+      - "8000"
+    volumes:
+      - ./django:/code/
+
+  static:
+    build: ./static
+    volumes:
+      - ./static:/usr/share/static
+
+  nginx:
+    restart: always
+    build: ./nginx
+    ports:
+      - "5050:80"
+    volumes_from:
+      - static
