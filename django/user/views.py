@@ -3,6 +3,7 @@ import re
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.models import User
 from django.views.decorators.http import require_http_methods
+from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import send_mail
 
 from .models import RegisterToken
@@ -54,6 +55,7 @@ def send_confirm(email, token):
         html_message='<p>Click <a target="_blank" href="http://y-pan.co/api/user/confirm?token=%s">http://y-pan.co/api/user/confirm?token=%s</a> to confirm your account.</p>' % (token, token))
 
 @require_http_methods(["POST"])
+@csrf_exempt
 def create_user(request):
     try:
         email = request.POST['email'].lower()
