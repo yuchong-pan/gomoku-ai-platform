@@ -66,8 +66,8 @@ def create_user(request):
         return response
 
     try:
-        email = request.POST['email'].lower()
-        password = request.POST['password']
+        email = body['email'].lower()
+        password = body['password']
     except KeyError:
         response = JsonResponse({'message': 'invalid fields'})
         response.status_code = 400
