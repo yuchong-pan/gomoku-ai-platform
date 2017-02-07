@@ -51,6 +51,7 @@ def create_register_token(email, password):
     while token_exists(token):
         token = gen_random_token()
     RegisterToken.objects.create(token=token, email=email, password=password)
+    return token
 
 def send_confirm(email, token):
     send_mail(
