@@ -1,4 +1,5 @@
 import re
+import json
 
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.models import User
@@ -57,6 +58,13 @@ def send_confirm(email, token):
 @require_http_methods(["POST"])
 @csrf_exempt
 def create_user(request):
+    try:
+        body = json.loads(request.body)
+    except:
+        response = JsonResponse({'message': 'invalid JSON'})
+        response.status_code = 400
+        return response
+
     try:
         email = request.POST['email'].lower()
         password = request.POST['password']
