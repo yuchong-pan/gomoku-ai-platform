@@ -53,13 +53,13 @@ def create_register_token(email, password):
     RegisterToken.objects.create(token=token, email=email, password=password)
 
 def send_confirm(email, token):
-    send_email(
-        'Confirm Your Account!',
+    send_mail(
+        'Confirm Your Account',
         '',
         'me@y-pan.co',
         [email],
         fail_silently=True,
-        html_message='<p>Click <a target="_blank" href="http://y-pan.co/api/user/confirm?token=%s">http://y-pan.co/api/user/confirm?token=%s</a> to confirm your account.</p>' % (token, token))
+        html_message='<p>Click <a target="_blank" href="http://y-pan.co/api/user/confirm?token=%s">http://y-pan.co/api/user/confirm?token=%s</a> to confirm your account!</p>' % (token, token))
 
 @require_http_methods(["POST"])
 @csrf_exempt
