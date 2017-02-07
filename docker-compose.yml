@@ -19,5 +19,7 @@ services:
     build: ./nginx
     ports:
       - "5050:80"
+    links:
+      - django:django
     volumes_from:
       - static
