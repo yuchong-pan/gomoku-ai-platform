@@ -110,6 +110,7 @@ STATIC_URL = '/static/'
 EMAIL_HOST = 'mail.privateemail.com'
 EMAIL_HOST_USER = 'me@y-pan.co'
 EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
+EMAIL_USE_TLS = True
 
 EMAIL_REGEX = re.compile(r"[^@]+@[^@]+\.[^@]+")
 TOKEN_ALPHABET = "abcdefghijklmnopqrstuvwxyz0123456789"
