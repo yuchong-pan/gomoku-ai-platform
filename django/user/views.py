@@ -1,5 +1,6 @@
 import re
 import json
+import random
 
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.models import User
@@ -8,8 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import send_mail
 
 from .models import RegisterToken
-
-EMAIL_REGEX = re.compile(r"[^@]+@[^@]+\.[^@]+")
+from gomoku.settings import EMAIL_REGEX, TOKEN_ALPHABET, TOKEN_LEN
 
 def is_valid_email(email):
     return EMAIL_REGEX.match(email)
@@ -39,6 +39,13 @@ def token_exists(token):
     except RegisterToken.DoesNotExist:
         return False
     return True
+
+def gen_random_token():
+    result = ""
+    token_alphabet_len = len(TOKEN_ALPHABET)
+    for i in range(TOKEN_LEN):
+        result += TOKEN_ALPHABET[random.randint(0, token_alphabet_len - 1)]
+    return result
 
 def create_register_token(email, password):
     token = gen_random_token()
